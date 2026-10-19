@@ -1,0 +1,32 @@
+---
+layout: base.njk
+pageType: blog
+title: Blog
+description: Notes on manufacturing, factory automation and robotics from Japan.
+permalink: /blog/
+---
+<section class="page-head">
+  <div class="wrap">
+    <h1>Manufacturing and tech, from Japan</h1>
+    <p>Short notes on factory automation, robotics and the Japanese industrial market.</p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    {% if collections.posts.length %}
+    <ul class="posts">
+      {% for post in collections.posts %}
+      <li><a href="{{ post.url }}">
+        <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+        <div lang="{{ post.data.lang or 'en' }}">
+          <h2>{{ post.data.title }}{% if post.data.lang and post.data.lang != 'en' %}<span class="lng">{{ post.data.lang | langName }}</span>{% endif %}</h2>
+          {% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
+        </div>
+      </a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty">No posts yet.</p>
+    {% endif %}
+  </div>
+</section>

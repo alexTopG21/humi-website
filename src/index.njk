@@ -1,0 +1,146 @@
+---
+layout: base.njk
+pageType: home
+permalink: /
+---
+<section class="hero">
+    <div class="wrap">
+      <div>
+        <h1 data-i18n="hero_h1">Hard-to-find Japanese industrial parts, sourced in Japan.</h1>
+        <p class="lead" data-i18n="hero_p">Send us a part number. We source it through our supplier network across Japan, send you a quote within one to two business days, and ship it tracked to your plant.</p>
+        <p class="note" data-i18n="hero_note">You pay only after you approve the quote.</p>
+      </div>
+
+      <form class="plate" id="plate" aria-labelledby="plate-title" action="{{ site.formEndpoint }}" method="POST">
+        <div class="head"><strong id="plate-title" data-i18n="plate_title">Get a quote</strong><span data-i18n="plate_sub">Free, no obligation</span></div>
+        <div class="row">
+          <label for="p-email" data-i18n="plate_email">Your email</label>
+          <input id="p-email" name="email" type="email" placeholder="name@company.com" autocomplete="email" required>
+        </div>
+        <div class="row">
+          <label for="p-model" data-i18n="plate_model">Model / part number</label>
+          <input id="p-model" class="pn" name="model" placeholder="SGM7J-04A7A" autocomplete="off" required>
+        </div>
+        <div class="row">
+          <label for="p-qty" data-i18n="plate_qty">Quantity</label>
+          <input id="p-qty" name="qty" type="number" min="1" value="1" inputmode="numeric">
+        </div>
+        <div class="row">
+          <label for="p-ship" data-i18n="plate_ship">Ship to (country)</label>
+          <input id="p-ship" name="country" placeholder="Mexico" autocomplete="country-name" required>
+        </div>
+        <input type="hidden" name="form" value="quick-quote">
+        <input type="hidden" name="language" class="lang-field" value="en">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="go">
+          <button class="btn" type="submit" data-i18n="plate_btn">Request quote</button>
+          <small><span data-i18n="plate_small">By sending, you agree to our</span> <a href="#privacy" data-i18n="f_privacy">privacy policy</a>.</small>
+        </div>
+        <p class="status" id="plate-status" role="status" aria-live="polite"></p>
+        <p class="plate-more"><a href="#quote" data-i18n="plate_more">Several parts or more details? Use the full form.</a></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="brands" aria-labelledby="brands-title">
+    <div class="wrap">
+      <h2 id="brands-title" data-i18n="brands_label">Brands we regularly source</h2>
+      <ul>
+        <li>Yaskawa</li><li>Mitsubishi Electric</li><li>Keyence</li><li>Omron</li><li>Panasonic</li><li>Fanuc</li><li>Harmonic Drive</li><li>THK</li><li>IKO</li><li>SMC</li><li>Oriental Motor</li><li>Cognex</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="wrap">
+      <h2 data-i18n="how_h2">How it works</h2>
+      <ol class="steps">
+        <li><span class="n">1</span><h3 data-i18n="s1_t">Send the part number</h3><p data-i18n="s1_d">Model, quantity, and the condition you'll accept: new, unused, or used.</p></li>
+        <li><span class="n">2</span><h3 data-i18n="s2_t">We source it in Japan</h3><p data-i18n="s2_d">We locate the part through our supplier network and verify its label and condition.</p></li>
+        <li><span class="n">3</span><h3 data-i18n="s3_t">You approve the quote</h3><p data-i18n="s3_d">You receive one all-in price covering the part, our fee and shipping. You pay only if you approve.</p></li>
+        <li><span class="n">4</span><h3 data-i18n="s4_t">We ship to your plant</h3><p data-i18n="s4_d">Packed for industrial parts and shipped tracked by EMS, FedEx or DHL, with photos before dispatch.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block alt" id="parts">
+    <div class="wrap">
+      <h2 data-i18n="parts_h2">What we source</h2>
+      <ul class="cats">
+        <li data-i18n="c_servo">Servo motors and drives</li>
+        <li data-i18n="c_plc">PLC and I/O modules</li>
+        <li data-i18n="c_vision">Machine vision cameras and lenses</li>
+        <li data-i18n="c_reducer">Reducers and strain wave gears</li>
+        <li data-i18n="c_sensor">Sensors and safety devices</li>
+        <li data-i18n="c_linear">Linear guides and bearings</li>
+      </ul>
+      <p class="parts-note" data-i18n="parts_note">Discontinued models are our specialty. If your machine still runs on it, ask.</p>
+    </div>
+  </section>
+
+  <section class="block" id="why">
+    <div class="wrap">
+      <h2 data-i18n="why_h2">Why maintenance teams use HUMI</h2>
+      <div class="why">
+        <div><h3 data-i18n="w1_t">Genuine, from Japan</h3><p data-i18n="w1_d">These brands are made and widely used in Japan, which gives us direct access to genuine parts. We verify every label before quoting.</p></div>
+        <div><h3 data-i18n="w2_t">Engineers, not just resellers</h3><p data-i18n="w2_d">We come from factory automation and know what a replacement has to match: encoder type, voltage, series.</p></div>
+        <div><h3 data-i18n="w3_t">English, French, Japanese</h3><p data-i18n="w3_d">We talk to Japanese sellers in Japanese and to you in your language, so no detail gets lost.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block alt quote" id="quote">
+    <div class="wrap">
+      <div>
+        <h2 data-i18n="quote_h2">Request a quote</h2>
+        <p class="sub" data-i18n="quote_p">One request can list several parts. We reply within one to two business days.</p>
+        <p class="alt-mail"><span data-i18n="form_alt">Prefer email? Write to</span> <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      </div>
+
+      <!-- Form endpoint is set in src/_data/site.json -->
+      <form class="full" id="quote-form" action="{{ site.formEndpoint }}" method="POST">
+        <div><label for="f-name" data-i18n="f_name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div><label for="f-company" data-i18n="f_company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
+        <div><label for="f-email" data-i18n="f_email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div><label for="f-country" data-i18n="f_country">Country</label><input id="f-country" name="country" autocomplete="country-name" required></div>
+        <div class="wide"><label for="parts" data-i18n="f_parts">Part numbers and quantities</label><textarea id="parts" name="parts" required placeholder="SGM7J-04A7A × 2&#10;A1SJ71UC24-R2 × 1"></textarea></div>
+        <div><label for="f-cond" data-i18n="f_cond">Accepted condition</label>
+          <select id="f-cond" name="condition">
+            <option value="any" data-i18n="o_any">Any</option>
+            <option value="new-unused" data-i18n="o_new">New or unused only</option>
+            <option value="used-ok" data-i18n="o_used">Used is fine (tested preferred)</option>
+          </select></div>
+        <div><label for="f-date" data-i18n="f_date">Needed by (optional)</label><input id="f-date" name="needed_by" type="date"></div>
+        <div class="wide"><label for="f-notes" data-i18n="f_notes">Notes (machine, urgency, link to photos)</label><textarea id="f-notes" name="notes" style="min-height:90px"></textarea></div>
+        <input type="hidden" name="language" id="f-lang" value="en">
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+        <label class="check wide"><input type="checkbox" required> <span><span data-i18n="f_consent">I agree to the</span> <a href="#privacy" data-i18n="f_privacy">privacy policy</a>.</span></label>
+        <div class="wide"><button class="btn" type="submit" data-i18n="f_submit">Send request</button></div>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  
+
+  <section class="block faq" id="faq">
+    <div class="wrap">
+      <h2 data-i18n="faq_h2">Questions</h2>
+      <details><summary data-i18n="q1">How do I pay?</summary><p data-i18n="a1">By bank transfer, Wise or PayPal invoice, after you approve the quote. We buy the part only once payment arrives.</p></details>
+      <details><summary data-i18n="q2">What does it cost?</summary><p data-i18n="a2">One all-in price: the part, our sourcing fee and shipping. There's no charge if we can't find the part.</p></details>
+      <details><summary data-i18n="q3">Are parts tested?</summary><p data-i18n="a3">We state each part's condition plainly: new, unused, or used and untested. When we can test a part, the quote says so.</p></details>
+      <details><summary data-i18n="q4">How long does shipping take?</summary><p data-i18n="a4">Usually 3 to 7 days by EMS, FedEx or DHL once the part reaches us. Import duties and taxes in your country are paid by the buyer.</p></details>
+      <details><summary data-i18n="q5">Can you ship anything?</summary><p data-i18n="a5">No. We follow Japanese export control rules and screen every part. Some items or destinations need approval, and some we decline.</p></details>
+    </div>
+  </section>
+  <section class="block contact" id="contact">
+    <div class="wrap">
+      <h2 data-i18n="ct_h2">Contact</h2>
+      <dl class="ct">
+        <div><dt data-i18n="ct_email">Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+        <div><dt data-i18n="ct_reply">Response time</dt><dd data-i18n="ct_reply_v">Within one to two business days</dd></div>
+        <div><dt data-i18n="ct_lang">Languages</dt><dd data-i18n="ct_lang_v">English, French, Japanese</dd></div>
+        <div><dt data-i18n="ct_loc">Location</dt><dd data-i18n="ct_loc_v">Fukuoka, Japan</dd></div>
+      </dl>
+    </div>
+  </section>
