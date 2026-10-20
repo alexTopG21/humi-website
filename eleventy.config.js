@@ -22,3 +22,10 @@ export default function (eleventyConfig) {
     htmlTemplateEngine: "njk",
   };
 }
+
+eleventyConfig.addPassthroughCopy({
+  "src/favicon.ico": "favicon.ico",
+  "src/favicon.svg": "favicon.svg",
+  "src/apple-touch-icon.png": "apple-touch-icon.png",
+  "src/logo.png": "logo.png"
+});
