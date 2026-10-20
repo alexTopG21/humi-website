@@ -4,6 +4,14 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/js");
   eleventyConfig.addPassthroughCopy("src/img");
 
+  // Favicons and logo, copied to the site root
+  eleventyConfig.addPassthroughCopy({
+    "src/favicon.ico": "favicon.ico",
+    "src/favicon.svg": "favicon.svg",
+    "src/apple-touch-icon.png": "apple-touch-icon.png",
+    "src/logo.png": "logo.png"
+  });
+
   // Blog posts: every Markdown file in src/blog/posts, newest first
   eleventyConfig.addCollection("posts", (api) =>
     api.getFilteredByGlob("src/blog/posts/*.md").sort((a, b) => b.date - a.date)
@@ -22,10 +30,3 @@ export default function (eleventyConfig) {
     htmlTemplateEngine: "njk",
   };
 }
-
-eleventyConfig.addPassthroughCopy({
-  "src/favicon.ico": "favicon.ico",
-  "src/favicon.svg": "favicon.svg",
-  "src/apple-touch-icon.png": "apple-touch-icon.png",
-  "src/logo.png": "logo.png"
-});
