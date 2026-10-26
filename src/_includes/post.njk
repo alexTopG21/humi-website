@@ -5,13 +5,17 @@ pageType: blog
 <article class="post">
   <div class="wrap">
     <div class="inner" lang="{{ lang or 'en' }}">
-      <a class="back" href="/blog/">Back to the blog</a>
+      {% if lang == 'ja' %}<a class="back" href="/ja/blog/">ブログ一覧に戻る</a>{% else %}<a class="back" href="/blog/">Back to the blog</a>{% endif %}
       <h1>{{ title }}</h1>
-      <p class="meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time></p>
+      <p class="meta"><time datetime="{{ page.date | isoDate }}">{% if lang == 'ja' %}{{ page.date | jaDate }}{% else %}{{ page.date | readableDate }}{% endif %}</time></p>
       <div class="prose">
         {{ content | safe }}
       </div>
     </div>
+    {% if lang == 'ja' %}
+    <p class="cta inner" lang="ja">ご質問やご相談は、<a href="/#contact">お問い合わせ</a>からお気軽にどうぞ。</p>
+    {% else %}
     <p class="cta inner">Looking for a Japanese part? <a href="/#quote">Request a quote</a> and we'll reply within one to two business days.</p>
+    {% endif %}
   </div>
 </article>
