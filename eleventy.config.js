@@ -17,9 +17,18 @@ export default function (eleventyConfig) {
     api.getFilteredByGlob("src/blog/posts/*.md").sort((a, b) => b.date - a.date)
   );
 
+  
+  // Japanese blog posts: every Markdown file in src/ja/blog/posts, newest first
+  eleventyConfig.addCollection("postsJa", (api) =>
+    api.getFilteredByGlob("src/ja/blog/posts/*.md").sort((a, b) => b.date - a.date)
+  );
+
   // Date formatting, e.g. 20 Oct 2026
   eleventyConfig.addFilter("readableDate", (d) =>
     new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Tokyo" }).format(d)
+  );
+    eleventyConfig.addFilter("jaDate", (d) =>
+    new Intl.DateTimeFormat("ja-JP", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Tokyo" }).format(d)
   );
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
   eleventyConfig.addFilter("langName", (l) => ({ en: "English", fr: "Français", ja: "日本語" }[l] || ""));
