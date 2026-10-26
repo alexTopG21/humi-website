@@ -73,7 +73,7 @@ document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click
 let start = "";
 try { start = localStorage.getItem("humi-lang") || ""; } catch (e) {}
 if (!start) start = (navigator.language || "en").toLowerCase().startsWith("fr") ? "fr" : "en";
-setLang(start);
+if (!document.body.dataset.fixedLang) setLang(start);
 document.querySelectorAll(".yr").forEach(e => e.textContent = new Date().getFullYear());
 
 /* Shared sender for both forms */
