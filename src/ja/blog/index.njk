@@ -1,0 +1,34 @@
+---
+layout: base.njk
+pageType: blog
+lang: ja
+title: ブログ
+description: ヒューマノイド、フィジカルAI、ロボット部品について、調べて・作って・試したことを記録する技術ノート。
+permalink: /ja/blog/
+---
+<section class="page-head">
+  <div class="wrap">
+    <h1>ヒューマノイドの技術ノート</h1>
+    <p>ヒューマノイド、フィジカルAI、ロボット部品について、調べて・作って・試したことを記録しています。</p>
+    <p><a href="/blog/" lang="en">English blog</a></p>
+  </div>
+</section>
+<section>
+  <div class="wrap">
+    {% if collections.postsJa.length %}
+    <ul class="posts">
+      {% for post in collections.postsJa %}
+      <li><a href="{{ post.url }}">
+        <time datetime="{{ post.date | isoDate }}">{{ post.date | jaDate }}</time>
+        <div>
+          <h2>{{ post.data.title }}</h2>
+          {% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
+        </div>
+      </a></li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty">まだ記事はありません。</p>
+    {% endif %}
+  </div>
+</section>
