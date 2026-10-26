@@ -32,6 +32,14 @@
 <header class="top">
   <div class="wrap">
     <a class="wordmark" href="/" aria-label="HUMI home">HUM<span class="i" aria-hidden="true"></span></a>
+    {% if lang == 'ja' %}
+    <nav aria-label="メイン">
+      <a class="link" href="/">ホーム</a>
+      <a class="link" href="/ja/blog/"{% if pageType == 'blog' %} aria-current="page"{% endif %}>ブログ</a>
+      <a class="link" href="/#contact">お問い合わせ</a>
+      <a class="link" href="/blog/" lang="en">English</a>
+    </nav>
+    {% else %}
     <nav aria-label="Main">
       <a class="link" href="/#how" data-i18n="nav_how">How it works</a>
       <a class="link" href="/#parts" data-i18n="nav_parts">What we source</a>
@@ -45,6 +53,7 @@
       {% endif %}
       <a class="btn small" href="/#quote" data-i18n="nav_cta">Request a quote</a>
     </nav>
+    {% endif %}
   </div>
 </header>
 
@@ -56,6 +65,15 @@
   <div class="wrap">
     <a class="wordmark" href="/" aria-label="HUMI home">HUM<span class="i" aria-hidden="true"></span></a>
     <div>
+      {% if lang == 'ja' %}
+      <p>HUMI（個人事業）／福岡</p>
+      <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      <p>HUMIは独立した事業者です。本サイトに記載のメーカーとは提携・認定関係にありません。メーカー名は部品を特定する目的でのみ使用しています。</p>
+      <div id="privacy">
+        <h3>プライバシーポリシー</h3>
+        <p>お問い合わせでいただいた情報は、ご返信と取引の完了のためにのみ使用します。配送・決済に必要な事業者を除き、第三者に販売・提供することはありません。訂正や削除のご希望は、いつでもご連絡ください。</p>
+      </div>
+      {% else %}
       <p data-i18n="foot_biz">HUMI, sole proprietorship, Fukuoka, Japan</p>
       <p><a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
       <p data-i18n="foot_disc">HUMI is an independent supplier. We are not affiliated with or authorized by the manufacturers named on this site; brand names only identify the parts.</p>
@@ -63,6 +81,7 @@
         <h3 data-i18n="priv_h">Privacy policy</h3>
         <p data-i18n="priv_p">We use the information you send only to answer your request and complete orders. We don't sell or share it, except with the shipping and payment providers needed to deliver your order. Write to us anytime to correct or delete your data.</p>
       </div>
+      {% endif %}
       <p>© <span class="yr">2026</span> HUMI</p>
     </div>
   </div>
