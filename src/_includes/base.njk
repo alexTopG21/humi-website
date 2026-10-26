@@ -27,7 +27,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/site.css">
 </head>
-<body data-page="{{ pageType or 'page' }}" data-email="{{ site.email }}">
+<body data-page="{{ pageType or 'page' }}" data-email="{{ site.email }}"{% if lang == 'ja' %} data-fixed-lang="ja"{% endif %}>
 
 <header class="top">
   <div class="wrap">
