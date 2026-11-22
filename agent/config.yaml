@@ -51,4 +51,7 @@ approval_hours: 12             # drafts nobody approves within this time are dis
 posts_dir: src/ja/blog/posts
 site_url: https://humi-parts.com
 post_url_pattern: "/ja/blog/{slug}/"
+english_version: true          # also publish an English translation of each approved post
+posts_dir_en: src/blog/posts
+post_url_pattern_en: "/blog/{slug}/"
 dedupe_days: 30                # recent posts the agent must not repeat

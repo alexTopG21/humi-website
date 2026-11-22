@@ -55,8 +55,8 @@ permalink: /
     <div class="wrap">
       <h2 data-i18n="how_h2">How it works</h2>
       <ol class="steps">
-        <li><span class="n">1</span><h3 data-i18n="s1_t">Send the part number</h3><p data-i18n="s1_d">Model, quantity, and the condition you'll accept: new, unused, or used.</p></li>
-        <li><span class="n">2</span><h3 data-i18n="s2_t">We source it in Japan</h3><p data-i18n="s2_d">We locate the part through our supplier network and verify its label and condition.</p></li>
+        <li><span class="n">1</span><h3 data-i18n="s1_t">Send the part number</h3><p data-i18n="s1_d">Model, quantity and the date you need it by.</p></li>
+        <li><span class="n">2</span><h3 data-i18n="s2_t">We source it in Japan</h3><p data-i18n="s2_d">We find it new through Japanese manufacturers and distributors and check the part number before quoting.</p></li>
         <li><span class="n">3</span><h3 data-i18n="s3_t">You approve the quote</h3><p data-i18n="s3_d">You receive one all-in price covering the part, our fee and shipping. You pay only if you approve.</p></li>
         <li><span class="n">4</span><h3 data-i18n="s4_t">We ship to your plant</h3><p data-i18n="s4_d">Packed for industrial parts and shipped tracked by EMS, FedEx or DHL, with photos before dispatch.</p></li>
       </ol>
@@ -74,7 +74,7 @@ permalink: /
         <li data-i18n="c_sensor">Sensors and safety devices</li>
         <li data-i18n="c_linear">Linear guides and bearings</li>
       </ul>
-      <p class="parts-note" data-i18n="parts_note">Discontinued models are our specialty. If your machine still runs on it, ask.</p>
+      <p class="parts-note" data-i18n="parts_note">New parts only, from Japanese manufacturers and distributors. Models that are hard to get outside Japan are our specialty.</p>
     </div>
   </section>
 
@@ -104,12 +104,6 @@ permalink: /
         <div><label for="f-email" data-i18n="f_email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
         <div><label for="f-country" data-i18n="f_country">Country</label><input id="f-country" name="country" autocomplete="country-name" required></div>
         <div class="wide"><label for="parts" data-i18n="f_parts">Part numbers and quantities</label><textarea id="parts" name="parts" required placeholder="SGM7J-04A7A × 2&#10;A1SJ71UC24-R2 × 1"></textarea></div>
-        <div><label for="f-cond" data-i18n="f_cond">Accepted condition</label>
-          <select id="f-cond" name="condition">
-            <option value="any" data-i18n="o_any">Any</option>
-            <option value="new-unused" data-i18n="o_new">New or unused only</option>
-            <option value="used-ok" data-i18n="o_used">Used is fine (tested preferred)</option>
-          </select></div>
         <div><label for="f-date" data-i18n="f_date">Needed by (optional)</label><input id="f-date" name="needed_by" type="date"></div>
         <div class="wide"><label for="f-notes" data-i18n="f_notes">Notes (machine, urgency, link to photos)</label><textarea id="f-notes" name="notes" style="min-height:90px"></textarea></div>
         <input type="hidden" name="language" id="f-lang" value="en">
@@ -121,14 +115,30 @@ permalink: /
     </div>
   </section>
 
-  
+  <section class="block alt" id="articles">
+    <div class="wrap">
+      <h2 data-i18n="art_h2">Latest articles</h2>
+      {% set enPosts = collections.posts %}
+      {% if enPosts.length %}
+      <ul class="posts">
+        {% for post in enPosts | head(3) %}
+        <li><a href="{{ post.url }}">
+          <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+          <div><h2>{{ post.data.title }}</h2>{% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}</div>
+        </a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <p class="parts-note"><a href="/blog/" data-i18n="art_all">All articles</a> · <a href="/ja/blog/" lang="ja">日本語の記事</a></p>
+    </div>
+  </section>
 
   <section class="block faq" id="faq">
     <div class="wrap">
       <h2 data-i18n="faq_h2">Questions</h2>
       <details><summary data-i18n="q1">How do I pay?</summary><p data-i18n="a1">By bank transfer, Wise or PayPal invoice, after you approve the quote. We buy the part only once payment arrives.</p></details>
       <details><summary data-i18n="q2">What does it cost?</summary><p data-i18n="a2">One all-in price: the part, our sourcing fee and shipping. There's no charge if we can't find the part.</p></details>
-      <details><summary data-i18n="q3">Are parts tested?</summary><p data-i18n="a3">We state each part's condition plainly: new, unused, or used and untested. When we can test a part, the quote says so.</p></details>
+      <details><summary data-i18n="q3">Are parts tested?</summary><p data-i18n="a3">Yes. We only supply new parts, bought from Japanese manufacturers and distributors, in their original packaging.</p></details>
       <details><summary data-i18n="q4">How long does shipping take?</summary><p data-i18n="a4">Usually 3 to 7 days by EMS, FedEx or DHL once the part reaches us. Import duties and taxes in your country are paid by the buyer.</p></details>
       <details><summary data-i18n="q5">Can you ship anything?</summary><p data-i18n="a5">No. We follow Japanese export control rules and screen every part. Some items or destinations need approval, and some we decline.</p></details>
     </div>
