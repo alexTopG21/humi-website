@@ -30,6 +30,8 @@ export default function (eleventyConfig) {
     eleventyConfig.addFilter("jaDate", (d) =>
     new Intl.DateTimeFormat("ja-JP", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Tokyo" }).format(d)
   );
+  // Cache-busting: changes every build so browsers fetch the new CSS/JS
+  eleventyConfig.addGlobalData("buildId", () => Date.now().toString(36));
   eleventyConfig.addFilter("head", (arr, n) => (arr || []).slice(0, n));
   eleventyConfig.addFilter("isoDate", (d) => new Date(d).toISOString().slice(0, 10));
   eleventyConfig.addFilter("langName", (l) => ({ en: "English", fr: "Français", ja: "日本語" }[l] || ""));
