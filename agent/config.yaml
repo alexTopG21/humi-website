@@ -1,0 +1,54 @@
+# HUMI blog agent settings. Change these freely; no code changes needed.
+
+# --- What to write about -------------------------------------------------
+topic: >
+  Humanoid robots and physical AI: the technology (actuators, reducers, sensors,
+  hands, batteries, robot foundation models, sim-to-real, manufacturing of humanoids)
+  and the money side (costs, supply chains, funding rounds, company strategy, earnings,
+  what investors are betting on).
+
+audience: >
+  Japanese engineers, manufacturing professionals and investors who want a deeper,
+  more technical view than Japanese tech media usually gives.
+
+# Where Layer 1 should look. Prefer deep, primary or expert sources from the US.
+preferred_sources: >
+  Company engineering blogs and technical reports, arXiv papers, SEC filings,
+  earnings calls and investor letters, IEEE Spectrum, deep-dive analyst newsletters,
+  conference talks, and long-form interviews with founders or engineers.
+
+# The angle that makes this blog different.
+japan_angle: >
+  Explain what it means for Japan: Japanese component makers (reducers, bearings,
+  motors, sensors, tools), Japanese manufacturers that could adopt humanoids, and
+  Japanese investors. Only where the sources support it; do not invent facts.
+
+length: "3,000〜5,000字"
+
+# --- Models ----------------------------------------------------------------
+models:
+  writer: claude-haiku-5-5     # Layer 1: research + draft (cheap)
+  editor: claude-sonnet-5-5    # Layer 2: fact-check + edit (better)
+
+web_search_tool: web_search_20250305
+max_searches_per_run: 8
+max_revisions: 1               # how many times the editor can send it back
+
+# --- Money -------------------------------------------------------------------
+# Prices are deliberately on the HIGH side so the cap triggers early rather than late.
+# Check https://claude.com/pricing#api and update if you want exact numbers.
+prices_usd_per_mtok:
+  writer: {input: 1.0, output: 5.0}
+  editor: {input: 3.0, output: 15.0}
+web_search_usd_per_1000: 10
+
+monthly_cap_jpy: 5000
+max_jpy_per_run: 250
+jpy_per_usd: 160               # conservative exchange rate
+
+# --- Approval & publishing -------------------------------------------------
+approval_hours: 12             # drafts nobody approves within this time are discarded
+posts_dir: src/ja/blog/posts
+site_url: https://humi-parts.com
+post_url_pattern: "/ja/blog/{slug}/"
+dedupe_days: 30                # recent posts the agent must not repeat

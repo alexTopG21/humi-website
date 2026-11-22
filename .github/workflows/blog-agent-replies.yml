@@ -1,0 +1,39 @@
+name: Blog agent - check Telegram replies
+
+on:
+  schedule:
+    - cron: "7,22,37,52 * * * *"   # every 15 minutes
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: blog-agent
+  cancel-in-progress: false
+
+jobs:
+  replies:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: site
+      - uses: actions/checkout@v4
+        with:
+          ref: blog-agent-state
+          path: state
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - run: |
+          git config --global user.name "humi-blog-agent"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - run: python site/agent/blog_agent.py poll
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          SITE_DIR: site
+          STATE_DIR: state
