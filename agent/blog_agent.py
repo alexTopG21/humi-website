@@ -227,12 +227,24 @@ REVIEW_TOOL = {
 }
 
 
-def forced_tool(r, name: str) -> dict:
-    if r.stop_reason == "max_tokens":
-        raise RuntimeError(f"{name}: the model ran out of output tokens")
-    for b in r.content:
-        if b.type == "tool_use" and b.name == name:
-            return dict(b.input)
+def ask_for_tool(client, meter: Meter, role: str, prompt: str, tool: dict) -> dict:
+    """Get the model's answer as a call to `tool`.
+
+    Newer models don't accept a forced tool_choice, so we ask for the tool in the prompt
+    and, if the model answers in plain text instead, ask once more."""
+    name = tool["name"]
+    messages = [{"role": "user", "content": f"{prompt}\n\nWhen you are done, call the {name} tool with the result. "
+                                            f"Do not answer in plain text."}]
+    for _ in range(2):
+        r = client.messages.create(model=CFG["models"][role], max_tokens=12000, tools=[tool], messages=messages)
+        meter.add(role, r.usage)
+        if r.stop_reason == "max_tokens":
+            raise RuntimeError(f"{name}: the model ran out of output tokens")
+        for b in r.content:
+            if b.type == "tool_use" and b.name == name:
+                return dict(b.input)
+        messages += [{"role": "assistant", "content": r.content},
+                     {"role": "user", "content": f"Now call the {name} tool with the finished result."}]
     raise RuntimeError(f"{name}: the model did not return the tool call")
 
 
@@ -337,13 +349,7 @@ SOURCES:
 {source_list(sources)}"""
     if feedback and previous:
         prompt += f"\n\nYOUR PREVIOUS DRAFT:\n{previous['body_markdown']}\n\nThe editor sent it back. Fix every point:\n{feedback}"
-    r = client.messages.create(
-        model=CFG["models"]["writer"], max_tokens=12000, tools=[ARTICLE_TOOL],
-        tool_choice={"type": "tool", "name": "submit_article"},
-        messages=[{"role": "user", "content": prompt}],
-    )
-    meter.add("writer", r.usage)
-    return forced_tool(r, "submit_article")
+    return ask_for_tool(client, meter, "writer", prompt, ARTICLE_TOOL)
 
 
 def edit(client, meter: Meter, notes: str, sources: dict, draft: dict, state: State) -> dict:
@@ -375,13 +381,7 @@ description: {draft['description']}
 topic: {draft['topic_en']}
 
 {draft['body_markdown']}"""
-    r = client.messages.create(
-        model=CFG["models"]["editor"], max_tokens=12000, tools=[REVIEW_TOOL],
-        tool_choice={"type": "tool", "name": "submit_review"},
-        messages=[{"role": "user", "content": prompt}],
-    )
-    meter.add("editor", r.usage)
-    return forced_tool(r, "submit_review")
+    return ask_for_tool(client, meter, "editor", prompt, REVIEW_TOOL)
 
 
 def clean_slug(s: str, fallback: str) -> str:
