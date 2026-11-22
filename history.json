@@ -60,5 +60,25 @@
       "https://humanoid.press/supplier-directory/"
     ],
     "status": "failed"
+  },
+  {
+    "id": "20261122-172116",
+    "created_at": "2026-11-22T17:21:16+09:00",
+    "title": "粗利率52%から32%へ：Leaderdriveの数字で読む中国ハーモニックリデューサーの価格競争と日本メーカーへの影響",
+    "topic": "Chinese harmonic reducer price war and overcapacity at Leaderdrive, and implications for Japanese reducer makers",
+    "sources": [
+      "https://finance.biggo.com/news/0147ca6e-d81a-4ae9-a127-088e807400cf",
+      "https://dataintelo.com/report/harmonic-drive-system-market",
+      "https://404kresearch.substack.com/p/leader-harmonic-deep-dive-80-90-humanoid",
+      "https://autonews.gasgoo.com/articles/market-industry/leaderdrive-plans-hong-kong-ipo-2093357096908443649",
+      "https://tramie68.substack.com/p/jp-morgan-identifies-four-bottlenecks",
+      "https://finance.biggo.com/news/JP_6324.T_2026-08-07",
+      "https://www.morningstar.com/stocks/xtks/6324/quote",
+      "https://www.grabarobot.com/blog/humanoid-robot-bill-of-materials-cost-2026/",
+      "https://global.iteschina.com/en/news/details/3006/humanoid-robot-parts-suppliers-in-china-a-buyer-s-guide-to-the-supply-chain",
+      "https://faxiangongchang.com/en/reports/china-humanoid-robot-2026",
+      "https://x.com/ParadisLabs/status/2072045619313598820"
+    ],
+    "status": "pending"
   }
 ]
