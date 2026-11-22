@@ -6,6 +6,8 @@
 <title>{% if title %}{{ title }} | {{ site.name }}{% else %}HUMI | Japanese industrial parts, sourced in Japan{% endif %}</title>
 <meta name="description" content="{{ description or 'Send a part number. HUMI sources Yaskawa, Mitsubishi, Keyence, Omron and Harmonic Drive parts through its supplier network in Japan and ships worldwide.' }}">
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+{% if translation %}<link rel="alternate" hreflang="{{ 'en' if lang == 'ja' else 'ja' }}" href="{{ site.url }}{{ translation }}">{% endif %}
+{% if pageType == 'home' %}<link rel="alternate" hreflang="en" href="{{ site.url }}/"><link rel="alternate" hreflang="ja" href="{{ site.url }}/ja/">{% endif %}
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -31,27 +33,30 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="wordmark" href="/" aria-label="HUMI home">HUM<span class="i" aria-hidden="true"></span></a>
     {% if lang == 'ja' %}
+    <a class="wordmark" href="/ja/" aria-label="HUMI ホーム">HUM<span class="i" aria-hidden="true"></span></a>
     <nav aria-label="メイン">
-      <a class="link" href="/">ホーム</a>
+      <a class="link" href="/ja/"{% if pageType == 'home' %} aria-current="page"{% endif %}>ホーム</a>
       <a class="link" href="/ja/blog/"{% if pageType == 'blog' %} aria-current="page"{% endif %}>ブログ</a>
-      <a class="link" href="/#contact">お問い合わせ</a>
-      <a class="link" href="/blog/" lang="en">English</a>
+      <a class="link" href="/ja/#contact">お問い合わせ</a>
+      <div class="lang" role="group" aria-label="言語">
+        <a href="/?lang=en" lang="en">EN</a>
+        <a href="/?lang=fr" lang="fr">FR</a>
+        <span class="on" aria-current="true">日本語</span>
+      </div>
     </nav>
     {% else %}
+    <a class="wordmark" href="/" aria-label="HUMI home">HUM<span class="i" aria-hidden="true"></span></a>
     <nav aria-label="Main">
       <a class="link" href="/#how" data-i18n="nav_how">How it works</a>
       <a class="link" href="/#parts" data-i18n="nav_parts">What we source</a>
       <a class="link" href="/blog/" data-i18n="nav_blog"{% if pageType == 'blog' %} aria-current="page"{% endif %}>Blog</a>
-      <a class="link" href="/ja/blog/" lang="ja">日本語</a>
       <a class="link" href="/#contact" data-i18n="nav_contact">Contact</a>
-      {% if pageType == 'home' %}
       <div class="lang" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" data-lang="fr" aria-pressed="false">FR</button>
+        <a href="/ja/" lang="ja">日本語</a>
       </div>
-      {% endif %}
       <a class="btn small" href="/#quote" data-i18n="nav_cta">Request a quote</a>
     </nav>
     {% endif %}

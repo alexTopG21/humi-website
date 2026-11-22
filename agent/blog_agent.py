@@ -384,6 +384,32 @@ topic: {draft['topic_en']}
     return ask_for_tool(client, meter, "editor", prompt, REVIEW_TOOL)
 
 
+TRANSLATION_FIELDS = {k: ARTICLE_FIELDS[k] for k in ("title", "description", "body_markdown")}
+TRANSLATION_TOOL = {
+    "name": "submit_translation",
+    "description": "Submit the English version of the post.",
+    "input_schema": {"type": "object", "properties": {
+        "title": {"type": "string", "description": "English title."},
+        "description": {"type": "string", "description": "One English sentence shown in the blog list."},
+        "body_markdown": {"type": "string", "description": "The English post body in Markdown. No H1."},
+    }, "required": ["title", "description", "body_markdown"]},
+}
+
+
+def translate(client, meter: Meter, article: dict) -> dict:
+    """English version of the approved Japanese article, for the EN blog."""
+    prompt = f"""Translate this Japanese blog post into natural, professional English for engineers and investors.
+Keep the meaning, structure, numbers, names and every Markdown link exactly. Do not add or remove facts.
+Translate headings too (for example "## 参考資料" becomes "## Sources", "## まとめ" becomes "## Summary").
+Write it the way a native English tech writer would, not word for word.
+
+title: {article['title']}
+description: {article['description']}
+
+{article['body_markdown']}"""
+    return ask_for_tool(client, meter, "writer", prompt, TRANSLATION_TOOL)
+
+
 def clean_slug(s: str, fallback: str) -> str:
     s = re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")[:50].strip("-")
     return s or fallback
@@ -443,13 +469,23 @@ def generate():
             return
 
         slug = clean_slug(review["slug"], f"post-{draft_id}")
+        english, en_note = None, ""
+        if CFG.get("english_version", True):
+            try:
+                english = translate(client, meter, review)
+                en_note = "英語版も同時に公開されます。\n"
+            except BudgetExceeded:
+                raise
+            except Exception as e:  # the Japanese post still goes out
+                en_note = f"英語版の作成に失敗しました（日本語版のみ公開）: {type(e).__name__}\n"
         tg.send(f"📝 新しい下書きが届きました\n\n{review['title']}\n\n{review['description']}")
         tg.send_long(review["body_markdown"])
         spent_after = spent + meter.usd
         control = tg.send(
             f"編集メモ:\n{review['notes']}\n\n"
             f"今回のコスト: 約¥{jpy(meter.usd)}（検索{meter.searches}回）\n"
-            f"今月: 約¥{jpy(spent_after):,} / ¥{CFG['monthly_cap_jpy']:,}\n\n"
+            f"今月: 約¥{jpy(spent_after):,} / ¥{CFG['monthly_cap_jpy']:,}\n"
+            f"{en_note}\n"
             f"公開しますか？ {CFG['approval_hours']}時間以内に返事がなければ破棄します。\n"
             f"「ok」と返信しても公開できます。",
             buttons=[[{"text": "✅ 公開する", "callback_data": f"p:{draft_id}"},
@@ -458,7 +494,7 @@ def generate():
         state.save_pending({
             "id": draft_id, "created_at": record["created_at"], "title": review["title"], "slug": slug,
             "description": review["description"], "body": review["body_markdown"],
-            "control_message_id": control,
+            "english": english, "control_message_id": control,
         })
         record["status"] = "pending"
     except BudgetExceeded as e:
@@ -473,20 +509,40 @@ def generate():
         state.commit(f"agent: draft {draft_id} ({record['status']}, ~¥{jpy(meter.usd)})")
 
 
-def publish(site: pathlib.Path, draft: dict) -> str:
+def _front(title: str, date: str, description: str, translation: str | None) -> str:
+    lines = ["---", f"title: {json.dumps(title, ensure_ascii=False)}", f"date: {date}",
+             f"description: {json.dumps(description, ensure_ascii=False)}"]
+    if translation:
+        lines.append(f"translation: {translation}")
+    lines.append("templateEngineOverride: md")  # so {{ }} in an article can't break the build
+    return "\n".join(lines + ["---", "", ""])
+
+
+def publish(site: pathlib.Path, draft: dict) -> list[str]:
+    """Write the Japanese post (and its English version, if any) and push. Returns the URLs."""
     date = now().date().isoformat()
-    posts = site / CFG["posts_dir"]
-    posts.mkdir(parents=True, exist_ok=True)
-    slug, n = draft["slug"], 2
-    while (posts / f"{date}-{slug}.md").exists():
+    ja_dir = site / CFG["posts_dir"]
+    en_dir = site / CFG.get("posts_dir_en", "src/blog/posts")
+    english = draft.get("english")
+    dirs = [ja_dir] + ([en_dir] if english else [])
+    for d in dirs:
+        d.mkdir(parents=True, exist_ok=True)
+    slug, n = draft["slug"], 2  # one slug shared by both languages
+    while any((d / f"{date}-{slug}.md").exists() for d in dirs):
         slug, n = f"{draft['slug']}-{n}", n + 1
-    front = (f"---\ntitle: {json.dumps(draft['title'], ensure_ascii=False)}\n"
-             f"date: {date}\n"
-             f"description: {json.dumps(draft['description'], ensure_ascii=False)}\n"
-             f"templateEngineOverride: md\n---\n\n")  # so {{ }} in an article can't break the build
-    (posts / f"{date}-{slug}.md").write_text(front + draft["body"].strip() + "\n", encoding="utf-8")
+    ja_path = CFG["post_url_pattern"].format(slug=slug)
+    en_path = CFG.get("post_url_pattern_en", "/blog/{slug}/").format(slug=slug)
+    (ja_dir / f"{date}-{slug}.md").write_text(
+        _front(draft["title"], date, draft["description"], en_path if english else None)
+        + draft["body"].strip() + "\n", encoding="utf-8")
+    paths = [ja_path]
+    if english:
+        (en_dir / f"{date}-{slug}.md").write_text(
+            _front(english["title"], date, english["description"], ja_path)
+            + english["body_markdown"].strip() + "\n", encoding="utf-8")
+        paths.append(en_path)
     commit_and_push(site, f"blog: {draft['title']}")
-    return CFG["site_url"].rstrip("/") + CFG["post_url_pattern"].format(slug=slug)
+    return [CFG["site_url"].rstrip("/") + x for x in paths]
 
 
 def poll():
@@ -504,11 +560,11 @@ def poll():
         tg.quiet("editMessageReplyMarkup", chat_id=tg.chat_id, message_id=draft["control_message_id"],
                  reply_markup={"inline_keyboard": []})
         if action == "p":
-            url = publish(site, draft)
-            state.set_status(draft_id, "published", url=url)
+            urls = publish(site, draft)
+            state.set_status(draft_id, "published", url=urls[0])
             if callback_id:
                 tg.quiet("answerCallbackQuery", callback_query_id=callback_id, text="公開しました")
-            tg.send(f"✅ 公開しました（1〜2分でサイトに反映されます）\n{draft['title']}\n{url}")
+            tg.send(f"✅ 公開しました（1〜2分でサイトに反映されます）\n{draft['title']}\n" + "\n".join(urls))
         else:
             state.set_status(draft_id, "rejected")
             if callback_id:
