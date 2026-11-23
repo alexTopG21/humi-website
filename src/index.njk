@@ -4,153 +4,159 @@ pageType: home
 permalink: /
 ---
 <section class="hero">
-    <div class="wrap">
-      <div>
-        <h1 data-i18n="hero_h1">Hard-to-find Japanese industrial parts, sourced in Japan.</h1>
-        <p class="lead" data-i18n="hero_p">Send us a part number. We source it through our supplier network across Japan, send you a quote within one to two business days, and ship it tracked to your plant.</p>
-        <p class="note" data-i18n="hero_note">You pay only after you approve the quote.</p>
+  <div class="wrap">
+    <div>
+      <p class="eyebrow" data-i18n="hero_eyebrow">Physical AI data, Japan</p>
+      <h1 data-i18n="hero_h1">Know which robot training clips are worth keeping.</h1>
+      <p class="lead" data-i18n="hero_p">HUMI checks first-person and robot-camera video for the problems that quietly ruin training data: darkness, blur, camera shake, hands out of frame, faces. You get a verdict for every clip, the exact moments that fail, and the sections you can still use.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#pilot" data-i18n="hero_cta">Request a pilot</a>
+        <a class="btn ghost" href="#how" data-i18n="hero_cta2">See how it works</a>
       </div>
-
-      <form class="plate" id="plate" aria-labelledby="plate-title" action="{{ site.formEndpoint }}" method="POST">
-        <div class="head"><strong id="plate-title" data-i18n="plate_title">Get a quote</strong><span data-i18n="plate_sub">Free, no obligation</span></div>
-        <div class="row">
-          <label for="p-email" data-i18n="plate_email">Your email</label>
-          <input id="p-email" name="email" type="email" placeholder="name@company.com" autocomplete="email" required>
-        </div>
-        <div class="row">
-          <label for="p-model" data-i18n="plate_model">Model / part number</label>
-          <input id="p-model" class="pn" name="model" placeholder="SGM7J-04A7A" autocomplete="off" required>
-        </div>
-        <div class="row">
-          <label for="p-qty" data-i18n="plate_qty">Quantity</label>
-          <input id="p-qty" name="qty" type="number" min="1" value="1" inputmode="numeric">
-        </div>
-        <div class="row">
-          <label for="p-ship" data-i18n="plate_ship">Ship to (country)</label>
-          <input id="p-ship" name="country" placeholder="Mexico" autocomplete="country-name" required>
-        </div>
-        <input type="hidden" name="form" value="quick-quote">
-        <input type="hidden" name="language" class="lang-field" value="en">
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="go">
-          <button class="btn" type="submit" data-i18n="plate_btn">Request quote</button>
-          <small><span data-i18n="plate_small">By sending, you agree to our</span> <a href="#privacy" data-i18n="f_privacy">privacy policy</a>.</small>
-        </div>
-        <p class="status" id="plate-status" role="status" aria-live="polite"></p>
-        <p class="plate-more"><a href="#quote" data-i18n="plate_more">Several parts or more details? Use the full form.</a></p>
-      </form>
+      <p class="note" data-i18n="hero_note">Runs on your own servers. Your video never leaves your building.</p>
     </div>
-  </section>
 
-  <section class="brands" aria-labelledby="brands-title">
-    <div class="wrap">
-      <h2 id="brands-title" data-i18n="brands_label">Brands we regularly source</h2>
-      <ul>
-        <li>Yaskawa</li><li>Mitsubishi Electric</li><li>Keyence</li><li>Omron</li><li>Panasonic</li><li>Fanuc</li><li>Harmonic Drive</li><li>THK</li><li>IKO</li><li>SMC</li><li>Oriental Motor</li><li>Cognex</li>
-      </ul>
-    </div>
-  </section>
-
-  <section class="block" id="how">
-    <div class="wrap">
-      <h2 data-i18n="how_h2">How it works</h2>
-      <ol class="steps">
-        <li><span class="n">1</span><h3 data-i18n="s1_t">Send the part number</h3><p data-i18n="s1_d">Model, quantity and the date you need it by.</p></li>
-        <li><span class="n">2</span><h3 data-i18n="s2_t">We source it in Japan</h3><p data-i18n="s2_d">We find it new through Japanese manufacturers and distributors and check the part number before quoting.</p></li>
-        <li><span class="n">3</span><h3 data-i18n="s3_t">You approve the quote</h3><p data-i18n="s3_d">You receive one all-in price covering the part, our fee and shipping. You pay only if you approve.</p></li>
-        <li><span class="n">4</span><h3 data-i18n="s4_t">We ship to your plant</h3><p data-i18n="s4_d">Packed for industrial parts and shipped tracked by EMS, FedEx or DHL, with photos before dispatch.</p></li>
-      </ol>
-    </div>
-  </section>
-
-  <section class="block alt" id="parts">
-    <div class="wrap">
-      <h2 data-i18n="parts_h2">What we source</h2>
-      <ul class="cats">
-        <li data-i18n="c_servo">Servo motors and drives</li>
-        <li data-i18n="c_plc">PLC and I/O modules</li>
-        <li data-i18n="c_vision">Machine vision cameras and lenses</li>
-        <li data-i18n="c_reducer">Reducers and strain wave gears</li>
-        <li data-i18n="c_sensor">Sensors and safety devices</li>
-        <li data-i18n="c_linear">Linear guides and bearings</li>
-      </ul>
-      <p class="parts-note" data-i18n="parts_note">New parts only, from Japanese manufacturers and distributors. Models that are hard to get outside Japan are our specialty.</p>
-    </div>
-  </section>
-
-  <section class="block" id="why">
-    <div class="wrap">
-      <h2 data-i18n="why_h2">Why maintenance teams use HUMI</h2>
-      <div class="why">
-        <div><h3 data-i18n="w1_t">Genuine, from Japan</h3><p data-i18n="w1_d">These brands are made and widely used in Japan, which gives us direct access to genuine parts. We verify every label before quoting.</p></div>
-        <div><h3 data-i18n="w2_t">Engineers, not just resellers</h3><p data-i18n="w2_d">We come from factory automation and know what a replacement has to match: encoder type, voltage, series.</p></div>
-        <div><h3 data-i18n="w3_t">English, French, Japanese</h3><p data-i18n="w3_d">We talk to Japanese sellers in Japanese and to you in your language, so no detail gets lost.</p></div>
+    <figure class="mock" aria-label="Example report">
+      <div class="mock-head"><strong data-i18n="mk_title">Batch report</strong><span>412 <span data-i18n="mk_clips">clips</span></span></div>
+      <div class="mock-sum">
+        <div><b class="g">288</b><span data-i18n="mk_usable">usable</span></div>
+        <div><b class="a">61</b><span data-i18n="mk_partial">partly usable</span></div>
+        <div><b class="r">63</b><span data-i18n="mk_rejected">rejected</span></div>
       </div>
-    </div>
-  </section>
-
-  <section class="block alt quote" id="quote">
-    <div class="wrap">
-      <div>
-        <h2 data-i18n="quote_h2">Request a quote</h2>
-        <p class="sub" data-i18n="quote_p">One request can list several parts. We reply within one to two business days.</p>
-        <p class="alt-mail"><span data-i18n="form_alt">Prefer email? Write to</span> <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
-      </div>
-
-      <!-- Form endpoint is set in src/_data/site.json -->
-      <form class="full" id="quote-form" action="{{ site.formEndpoint }}" method="POST">
-        <div><label for="f-name" data-i18n="f_name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
-        <div><label for="f-company" data-i18n="f_company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
-        <div><label for="f-email" data-i18n="f_email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-        <div><label for="f-country" data-i18n="f_country">Country</label><input id="f-country" name="country" autocomplete="country-name" required></div>
-        <div class="wide"><label for="parts" data-i18n="f_parts">Part numbers and quantities</label><textarea id="parts" name="parts" required placeholder="SGM7J-04A7A × 2&#10;A1SJ71UC24-R2 × 1"></textarea></div>
-        <div><label for="f-date" data-i18n="f_date">Needed by (optional)</label><input id="f-date" name="needed_by" type="date"></div>
-        <div class="wide"><label for="f-notes" data-i18n="f_notes">Notes (machine, urgency, link to photos)</label><textarea id="f-notes" name="notes" style="min-height:90px"></textarea></div>
-        <input type="hidden" name="language" id="f-lang" value="en">
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-        <label class="check wide"><input type="checkbox" required> <span><span data-i18n="f_consent">I agree to the</span> <a href="#privacy" data-i18n="f_privacy">privacy policy</a>.</span></label>
-        <div class="wide"><button class="btn" type="submit" data-i18n="f_submit">Send request</button></div>
-        <p class="status" id="status" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-  </section>
-
-  <section class="block alt" id="articles">
-    <div class="wrap">
-      <h2 data-i18n="art_h2">Latest articles</h2>
-      {% set enPosts = collections.posts %}
-      {% if enPosts.length %}
-      <ul class="posts">
-        {% for post in enPosts | head(3) %}
-        <li><a href="{{ post.url }}">
-          <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
-          <div><h2>{{ post.data.title }}</h2>{% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}</div>
-        </a></li>
-        {% endfor %}
+      <ul class="mock-rows">
+        <li><span class="f pn">assembly_0141.mp4</span><span class="v g" data-i18n="mk_v_ok">Usable</span><span class="tl"></span></li>
+        <li><span class="f pn">assembly_0142.mp4</span><span class="v a" data-i18n="mk_v_part">Partly usable</span><span class="tl"><i class="k-hand" style="left:58%;width:16%"></i></span><span class="rsn" data-i18n="mk_why_hand">Hands out of frame 0:41–0:52</span></li>
+        <li><span class="f pn">assembly_0143.mp4</span><span class="v r" data-i18n="mk_v_rej">Rejected</span><span class="tl"><i class="k-dark" style="left:0;width:100%"></i></span><span class="rsn" data-i18n="mk_why_dark">Too dark 100% of the time</span></li>
+        <li><span class="f pn">assembly_0144.mp4</span><span class="v a" data-i18n="mk_v_part">Partly usable</span><span class="tl"><i class="k-shake" style="left:12%;width:9%"></i><i class="k-blur" style="left:70%;width:7%"></i></span><span class="rsn" data-i18n="mk_why_shake">Camera shake 0:07–0:13</span></li>
       </ul>
-      {% endif %}
-      <p class="parts-note"><a href="/blog/" data-i18n="art_all">All articles</a> · <a href="/ja/blog/" lang="ja">日本語の記事</a></p>
-    </div>
-  </section>
+      <figcaption data-i18n="mk_cap">Illustration of a report. Figures are examples.</figcaption>
+    </figure>
+  </div>
+</section>
 
-  <section class="block faq" id="faq">
-    <div class="wrap">
-      <h2 data-i18n="faq_h2">Questions</h2>
-      <details><summary data-i18n="q1">How do I pay?</summary><p data-i18n="a1">By bank transfer, Wise or PayPal invoice, after you approve the quote. We buy the part only once payment arrives.</p></details>
-      <details><summary data-i18n="q2">What does it cost?</summary><p data-i18n="a2">One all-in price: the part, our sourcing fee and shipping. There's no charge if we can't find the part.</p></details>
-      <details><summary data-i18n="q3">Are parts tested?</summary><p data-i18n="a3">Yes. We only supply new parts, bought from Japanese manufacturers and distributors, in their original packaging.</p></details>
-      <details><summary data-i18n="q4">How long does shipping take?</summary><p data-i18n="a4">Usually 3 to 7 days by EMS, FedEx or DHL once the part reaches us. Import duties and taxes in your country are paid by the buyer.</p></details>
-      <details><summary data-i18n="q5">Can you ship anything?</summary><p data-i18n="a5">No. We follow Japanese export control rules and screen every part. Some items or destinations need approval, and some we decline.</p></details>
+<section class="block" id="problem">
+  <div class="wrap">
+    <h2 data-i18n="pb_h2">Bad clips are expensive twice</h2>
+    <div class="why">
+      <div><h3 data-i18n="pb1_t">You pay to collect them</h3><p data-i18n="pb1_d">Operators, contributors and robot time are paid for every hour recorded, usable or not.</p></div>
+      <div><h3 data-i18n="pb2_t">Then they hurt the model</h3><p data-i18n="pb2_d">A dark, shaky or incomplete demonstration teaches the robot the wrong thing. Teams that filter their data get better results from fewer hours.</p></div>
+      <div><h3 data-i18n="pb3_t">Watching it all doesn't scale</h3><p data-i18n="pb3_d">Reviewing hours of footage by eye is slow and inconsistent. Quality control becomes the bottleneck of the whole data pipeline.</p></div>
     </div>
-  </section>
-  <section class="block contact" id="contact">
-    <div class="wrap">
-      <h2 data-i18n="ct_h2">Contact</h2>
-      <dl class="ct">
-        <div><dt data-i18n="ct_email">Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
-        <div><dt data-i18n="ct_reply">Response time</dt><dd data-i18n="ct_reply_v">Within one to two business days</dd></div>
-        <div><dt data-i18n="ct_lang">Languages</dt><dd data-i18n="ct_lang_v">English, French, Japanese</dd></div>
-        <div><dt data-i18n="ct_loc">Location</dt><dd data-i18n="ct_loc_v">Fukuoka, Japan</dd></div>
-      </dl>
+  </div>
+</section>
+
+<section class="block alt" id="product">
+  <div class="wrap">
+    <h2 data-i18n="ck_h2">What HUMI checks</h2>
+    <ul class="checks-grid">
+      <li><i class="k-dark"></i><div><h3 data-i18n="ck1_t">Light</h3><p data-i18n="ck1_d">Too dark or overexposed, for the whole clip or just a few seconds.</p></div></li>
+      <li><i class="k-blur"></i><div><h3 data-i18n="ck2_t">Sharpness</h3><p data-i18n="ck2_d">Out-of-focus or smudged footage, ignoring ordinary motion blur from fast hands.</p></div></li>
+      <li><i class="k-shake"></i><div><h3 data-i18n="ck3_t">Camera shake</h3><p data-i18n="ck3_d">Sustained shaking of a head- or chest-mounted camera.</p></div></li>
+      <li><i class="k-hand"></i><div><h3 data-i18n="ck4_t">Hands in frame</h3><p data-i18n="ck4_d">How long one or both hands are visible, and when they leave the picture.</p></div></li>
+      <li><i class="k-face"></i><div><h3 data-i18n="ck5_t">Faces and privacy</h3><p data-i18n="ck5_d">Flags clips where a face appears, before they reach a customer or a model.</p></div></li>
+      <li><i class="k-basic"></i><div><h3 data-i18n="ck6_t">File basics</h3><p data-i18n="ck6_d">Length, resolution, frame rate and unreadable files.</p></div></li>
+    </ul>
+    <p class="parts-note"><strong data-i18n="ck_next_t">In development:</strong> <span data-i18n="ck_next_d">task pace, frozen frames, duplicate clips and sensor timing for teleoperation logs.</span></p>
+  </div>
+</section>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <h2 data-i18n="how_h2">How it works</h2>
+    <ol class="steps">
+      <li><span class="n">1</span><h3 data-i18n="s1_t">Install it on your side</h3><p data-i18n="s1_d">HUMI runs on your own computers or servers. Nothing is uploaded to us.</p></li>
+      <li><span class="n">2</span><h3 data-i18n="s2_t">Point it at a batch</h3><p data-i18n="s2_d">Drop in a folder of clips. Each one is measured once, a few times per second.</p></li>
+      <li><span class="n">3</span><h3 data-i18n="s3_t">Set your own limits</h3><p data-i18n="s3_d">Sliders and presets decide what counts as too dark, too blurry or too shaky. Verdicts update instantly.</p></li>
+      <li><span class="n">4</span><h3 data-i18n="s4_t">Act on the report</h3><p data-i18n="s4_d">Pay for usable clips, send rejects back with the reason, keep the good sections. Export to CSV or JSON.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block alt" id="why">
+  <div class="wrap">
+    <h2 data-i18n="why_h2">Why HUMI</h2>
+    <div class="why">
+      <div><h3 data-i18n="w1_t">Your data stays in Japan</h3><p data-i18n="w1_d">Robot training video is often confidential. HUMI runs where your data already is, so there is nothing to upload and nothing to approve.</p></div>
+      <div><h3 data-i18n="w2_t">Your rules, not ours</h3><p data-i18n="w2_d">Every buyer has different standards. You set the limits for each check and save them as your own preset.</p></div>
+      <div><h3 data-i18n="w3_t">Built from the factory floor</h3><p data-i18n="w3_d">Made by an engineer from manufacturing and machine vision, with support in Japanese, English and French.</p></div>
     </div>
-  </section>
+  </div>
+</section>
+
+<section class="block quote" id="pilot">
+  <div class="wrap">
+    <div>
+      <h2 data-i18n="pl_h2">Request a pilot</h2>
+      <p class="sub" data-i18n="pl_p">We're working with a small number of data-collection teams, robot makers and labs in Japan. Tell us about your data and we'll run HUMI on a sample batch with you.</p>
+      <p class="alt-mail"><span data-i18n="form_alt">Prefer email? Write to</span> <a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+    </div>
+    <form class="full" id="pilot-form" action="{{ site.formEndpoint }}" method="POST">
+      <div><label for="f-name" data-i18n="f_name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div><label for="f-company" data-i18n="f_company">Company or lab</label><input id="f-company" name="company" autocomplete="organization" required></div>
+      <div class="wide"><label for="f-email" data-i18n="f_email">Work email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div><label for="f-type" data-i18n="f_type">Type of data</label>
+        <select id="f-type" name="data_type">
+          <option value="egocentric" data-i18n="o_ego">First-person (egocentric) video</option>
+          <option value="teleop" data-i18n="o_teleop">Teleoperation / robot camera</option>
+          <option value="umi" data-i18n="o_umi">Handheld gripper (UMI-style)</option>
+          <option value="other" data-i18n="o_other">Other or mixed</option>
+        </select></div>
+      <div><label for="f-hours" data-i18n="f_hours">Hours collected per month</label>
+        <select id="f-hours" name="hours_per_month">
+          <option value="<100" data-i18n="o_h1">Under 100</option>
+          <option value="100-1000" data-i18n="o_h2">100 to 1,000</option>
+          <option value=">1000" data-i18n="o_h3">More than 1,000</option>
+          <option value="unknown" data-i18n="o_h4">Not sure yet</option>
+        </select></div>
+      <div class="wide"><label for="f-notes" data-i18n="f_notes">How do you check quality today? (optional)</label><textarea id="f-notes" name="notes" style="min-height:100px"></textarea></div>
+      <input type="hidden" name="form" value="pilot">
+      <input type="hidden" name="language" id="f-lang" value="en">
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+      <label class="check wide"><input type="checkbox" required> <span><span data-i18n="f_consent">I agree to the</span> <a href="#privacy" data-i18n="f_privacy">privacy policy</a>.</span></label>
+      <div class="wide"><button class="btn" type="submit" data-i18n="f_submit">Request a pilot</button></div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section class="block alt" id="research">
+  <div class="wrap">
+    <h2 data-i18n="rs_h2">Research</h2>
+    <p class="sub-lead" data-i18n="rs_p">We track Japan's robotics and physical-AI supply chain with public data, and write about what it means for the people building robots.</p>
+    {% set enPosts = collections.posts %}
+    {% if enPosts.length %}
+    <ul class="posts">
+      {% for post in enPosts | head(3) %}
+      <li><a href="{{ post.url }}">
+        <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+        <div><h2>{{ post.data.title }}</h2>{% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}</div>
+      </a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <p class="parts-note"><a href="/blog/" data-i18n="art_all">All articles</a> · <a href="/ja/blog/" lang="ja">日本語の記事</a></p>
+  </div>
+</section>
+
+<section class="block faq" id="faq">
+  <div class="wrap">
+    <h2 data-i18n="faq_h2">Questions</h2>
+    <details><summary data-i18n="q1">Is our video uploaded anywhere?</summary><p data-i18n="a1">No. HUMI is installed on your own machines and processes video there. We never receive your footage unless you choose to share a sample with us.</p></details>
+    <details><summary data-i18n="q2">Which formats does it read?</summary><p data-i18n="a2">MP4, MOV, AVI, MKV and WEBM video today. Support for robot logs (MCAP, LeRobot) is in development.</p></details>
+    <details><summary data-i18n="q3">Can it tell whether the task was done correctly?</summary><p data-i18n="a3">Not yet. Today it checks whether the footage is usable: light, sharpness, shake, hands and privacy. Task-level checks are on our roadmap, starting with assembly and handling tasks.</p></details>
+    <details><summary data-i18n="q4">What does it cost?</summary><p data-i18n="a4">Pilots with early partners are free. After that, a flat yearly license per company with unlimited use, updates and support included.</p></details>
+    <details><summary data-i18n="q5">Who is it for?</summary><p data-i18n="a5">Teams that collect or buy robot training data in Japan: data-collection companies, humanoid and robot makers, and research labs.</p></details>
+  </div>
+</section>
+
+<section class="block contact" id="contact">
+  <div class="wrap">
+    <h2 data-i18n="ct_h2">Contact</h2>
+    <dl class="ct">
+      <div><dt data-i18n="ct_email">Email</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd></div>
+      <div><dt data-i18n="ct_reply">Response time</dt><dd data-i18n="ct_reply_v">Within one to two business days</dd></div>
+      <div><dt data-i18n="ct_lang">Languages</dt><dd data-i18n="ct_lang_v">Japanese, English, French</dd></div>
+      <div><dt data-i18n="ct_loc">Location</dt><dd data-i18n="ct_loc_v">Fukuoka, Japan</dd></div>
+    </dl>
+  </div>
+</section>
