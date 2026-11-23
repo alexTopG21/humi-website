@@ -49,7 +49,7 @@ jpy_per_usd: 160               # conservative exchange rate
 # --- Approval & publishing -------------------------------------------------
 approval_hours: 12             # drafts nobody approves within this time are discarded
 posts_dir: src/ja/blog/posts
-site_url: https://humi-parts.com
+site_url: https://humi-ai.com
 post_url_pattern: "/ja/blog/{slug}/"
 english_version: true          # also publish an English translation of each approved post
 posts_dir_en: src/blog/posts
