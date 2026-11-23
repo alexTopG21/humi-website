@@ -2,56 +2,96 @@
 layout: base.njk
 pageType: home
 lang: ja
-title: ヒューマノイドとフィジカルAIの技術ノート
-description: HUMIは福岡を拠点に、ヒューマノイド、フィジカルAI、ロボット部品の技術と市場を、海外の一次情報から読み解いています。
+title: 日本発、フィジカルAIのためのデータ基盤
+description: HUMI（Humanoid Industries）は福岡を拠点に、ロボットの学習データを集め、確かめ、理解するためのツールをつくっています。まずはロボット学習動画の品質チェック「HUMI Inspect」から。
+alt: /
 permalink: /ja/
 ---
-<section class="page-head">
+<section class="hero co">
   <div class="wrap">
-    <h1>ヒューマノイドとフィジカルAIを、部品と現場から読み解く。</h1>
-    <p>HUMIは福岡を拠点に、ヒューマノイド、フィジカルAI、ロボット部品の技術と市場を追いかけています。海外の技術資料や決算資料をもとに、日本のものづくりとサプライヤーにとっての意味を解説します。</p>
+    <div>
+      <p class="eyebrow">Humanoid Industries・福岡</p>
+      <h1>日本発、<br>フィジカルAIのためのデータ基盤。</h1>
+      <p class="lead">ロボットはデータから学びます。HUMIは、ロボット開発チームが学習データを集め、確かめ、理解するためのツールをつくっています。最初の製品は、ロボット学習動画の品質チェックです。</p>
+      <div class="hero-cta">
+        <a class="btn" href="/ja/inspect/">HUMI Inspectを見る</a>
+        <a class="btn ghost" href="/ja/blog/">リサーチを読む</a>
+      </div>
+    </div>
+
+    <figure class="pipe" aria-label="HUMIの位置づけ">
+      <figcaption>ロボットのデータパイプラインにおけるHUMIの位置づけ</figcaption>
+      <ol>
+        <li class="dim"><span class="st">検討中</span><b>収集</b><span>国内の現場から実作業データを</span></li>
+        <li class="on"><span class="st">試験導入受付中</span><b>HUMI Inspect</b><span>モデルに渡す前に、すべてのクリップを確認</span></li>
+        <li class="dim"><span class="st st-x">お客様</span><b>学習</b><span>きれいなデータで、より良いロボットを</span></li>
+      </ol>
+      <div class="pipe-foot"><b>HUMI Research</b>・日本のロボット・サプライチェーンを公開データで分析</div>
+    </figure>
   </div>
 </section>
 
-<section class="block" id="articles">
+<section class="block" id="build">
   <div class="wrap">
-    <h2>最新の記事</h2>
+    <h2>つくっているもの</h2>
+    <div class="cards">
+      <a class="card-p main" href="/ja/inspect/">
+        <span class="tag ok">試験導入受付中</span>
+        <h3>HUMI Inspect</h3>
+        <p>ロボット学習動画の品質チェック。暗い・ぼけている・揺れているクリップ、手のフレームアウト、顔の映り込みを検出し、使えるクリップを判定します。お客様のサーバー上で動作します。</p>
+        <span class="more">HUMI Inspectを見る →</span>
+      </a>
+      <a class="card-p" href="/ja/blog/">
+        <span class="tag">公開中</span>
+        <h3>HUMI Research</h3>
+        <p>日本のロボット・フィジカルAIのサプライチェーンを、データにもとづいて解説。日本語と英語で公開しています。</p>
+        <span class="more">リサーチを読む →</span>
+      </a>
+      <a class="card-p" href="#contact">
+        <span class="tag dim">検討中</span>
+        <h3>国内でのデータ収集</h3>
+        <p>国内の職場から、同意を得たうえで実作業のデータを収集。必要としている方のお話をお聞きしたいと考えています。</p>
+        <span class="more">相談する →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="japan">
+  <div class="wrap">
+    <h2>なぜ日本なのか</h2>
+    <div class="why">
+      <div><h3>ロボットは日本の部品でできている</h3><p>今日のロボットに使われる減速機、モーター、センサーの多くは日本製です。それをつくる産業がここにあります。</p></div>
+      <div><h3>国外に出せないデータがある</h3><p>工場や職場の映像を海外に送ることに、日本企業は慎重です。社内で動き、国内でサポートできるツールが現場に合っています。</p></div>
+      <div><h3>ロボットは日本の現場で働く</h3><p>日本で使われるロボットには、日本の職場、道具、言葉のデータが必要です。いま、学習データの多くは海外で集められています。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="wrap about">
+    <h2>HUMIについて</h2>
+    <div>
+      <p>HUMI（Humanoid Industries）は、福岡の独立系の会社です。半導体製造と工場自動化の現場で、生産ラインとマシンビジョンに携わってきたエンジニアが立ち上げました。</p>
+      <p>ロボットの学習データを集め、使う人のための実用的なツールをつくり、日本のロボット産業について分かったことを公開しています。日本語・英語・フランス語で対応します。</p>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="research">
+  <div class="wrap">
+    <h2>最新のリサーチ</h2>
     {% if collections.postsJa.length %}
     <ul class="posts">
-      {% for post in collections.postsJa | head(5) %}
+      {% for post in collections.postsJa | head(4) %}
       <li><a href="{{ post.url }}">
         <time datetime="{{ post.date | isoDate }}">{{ post.date | jaDate }}</time>
-        <div>
-          <h2>{{ post.data.title }}</h2>
-          {% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
-        </div>
+        <div><h2>{{ post.data.title }}</h2>{% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}</div>
       </a></li>
       {% endfor %}
     </ul>
-    {% else %}
-    <p class="empty">まだ記事はありません。</p>
     {% endif %}
     <p class="parts-note"><a href="/ja/blog/">すべての記事を見る</a></p>
-  </div>
-</section>
-
-<section class="block alt" id="about">
-  <div class="wrap">
-    <h2>HUMIについて</h2>
-    <div class="why">
-      <div>
-        <h3>技術ノート</h3>
-        <p>海外の技術資料、決算資料、研究論文をもとに、ヒューマノイドとフィジカルAIの動きを日本語で解説しています。同じ記事の英語版も公開しています。</p>
-      </div>
-      <div>
-        <h3>海外向けの部品調達</h3>
-        <p>海外の工場や開発チームに向けて、日本の新品の産業部品を調達・発送しています。対応は英語とフランス語です。<a href="/?lang=en" lang="en">English site</a></p>
-      </div>
-      <div>
-        <h3>製造現場の視点</h3>
-        <p>工場の自動化と製造現場の経験をもとに、ニュースの見出しだけでは分からない部品・コスト・サプライチェーンの話を掘り下げます。</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -64,5 +104,6 @@ permalink: /ja/
       <div><dt>対応言語</dt><dd>日本語・英語・フランス語</dd></div>
       <div><dt>所在地</dt><dd>福岡</dd></div>
     </dl>
+    <p class="parts-note">自社のデータでHUMI Inspectを試してみませんか？ <a href="/ja/inspect/#pilot">試験導入を相談する</a></p>
   </div>
 </section>

@@ -34,7 +34,7 @@ To edit or delete a post, open its file on GitHub and use the pencil (edit) or t
    - Framework preset: **Eleventy**
    - Build command: `npx @11ty/eleventy`
    - Build output directory: `_site`
-4. Deploy. Then under **Custom domains**, add your domain (e.g. humi-parts.com).
+4. Deploy. Then under **Custom domains**, add your domain (e.g. humi-ai.com).
 
 ## Work on it locally (optional)
 
