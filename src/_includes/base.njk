@@ -6,8 +6,8 @@
 <title>{% if title %}{{ title }} | {{ site.name }}{% else %}HUMI | Quality checks for robot training video{% endif %}</title>
 <meta name="description" content="{{ description or 'HUMI checks first-person and robot-camera training video for darkness, blur, camera shake, hands out of frame and faces, and tells you which clips to keep. Runs on your own servers in Japan.' }}">
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-{% if translation %}<link rel="alternate" hreflang="{{ 'en' if lang == 'ja' else 'ja' }}" href="{{ site.url }}{{ translation }}">{% endif %}
-{% if pageType == 'home' %}<link rel="alternate" hreflang="en" href="{{ site.url }}/"><link rel="alternate" hreflang="ja" href="{{ site.url }}/ja/">{% endif %}
+{% set other = alt or translation %}
+{% if other %}<link rel="alternate" hreflang="{{ 'en' if lang == 'ja' else 'ja' }}" href="{{ site.url }}{{ other }}">{% endif %}
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -36,30 +36,30 @@
     {% if lang == 'ja' %}
     <a class="wordmark" href="/ja/" aria-label="HUMI ホーム">HUM<span class="i" aria-hidden="true"></span></a>
     <nav aria-label="メイン">
-      <a class="link" href="/ja/#product">製品</a>
-      <a class="link" href="/ja/#how">仕組み</a>
+      <a class="link" href="/ja/inspect/"{% if pageType == 'inspect' %} aria-current="page"{% endif %}>HUMI Inspect</a>
       <a class="link" href="/ja/blog/"{% if pageType == 'blog' %} aria-current="page"{% endif %}>リサーチ</a>
+      <a class="link" href="/ja/#about">会社概要</a>
       <a class="link" href="/ja/#contact">お問い合わせ</a>
       <div class="lang" role="group" aria-label="言語">
-        <a href="/?lang=en" lang="en">EN</a>
-        <a href="/?lang=fr" lang="fr">FR</a>
+        <a href="{{ other or '/' }}?lang=en" lang="en">EN</a>
+        <a href="{{ other or '/' }}?lang=fr" lang="fr">FR</a>
         <span class="on" aria-current="true">日本語</span>
       </div>
-      <a class="btn small" href="/ja/#pilot">試験導入を相談</a>
+      <a class="btn small" href="/ja/inspect/#pilot">試験導入を相談</a>
     </nav>
     {% else %}
     <a class="wordmark" href="/" aria-label="HUMI home">HUM<span class="i" aria-hidden="true"></span></a>
     <nav aria-label="Main">
-      <a class="link" href="/#product" data-i18n="nav_product">Product</a>
-      <a class="link" href="/#how" data-i18n="nav_how">How it works</a>
+      <a class="link" href="/inspect/"{% if pageType == 'inspect' %} aria-current="page"{% endif %}>HUMI Inspect</a>
       <a class="link" href="/blog/" data-i18n="nav_research"{% if pageType == 'blog' %} aria-current="page"{% endif %}>Research</a>
+      <a class="link" href="/#about" data-i18n="nav_about">About</a>
       <a class="link" href="/#contact" data-i18n="nav_contact">Contact</a>
       <div class="lang" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
         <button type="button" data-lang="fr" aria-pressed="false">FR</button>
-        <a href="/ja/" lang="ja">日本語</a>
+        <a href="{{ other or '/ja/' }}" lang="ja">日本語</a>
       </div>
-      <a class="btn small" href="/#pilot" data-i18n="nav_cta">Request a pilot</a>
+      <a class="btn small" href="/inspect/#pilot" data-i18n="nav_cta">Request a pilot</a>
     </nav>
     {% endif %}
   </div>

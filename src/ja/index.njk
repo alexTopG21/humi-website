@@ -2,130 +2,85 @@
 layout: base.njk
 pageType: home
 lang: ja
-title: ロボット学習データの品質チェック
-description: HUMIは、一人称視点やロボットカメラの学習用動画を自動でチェックし、使えるクリップと使えない区間を判定します。データは社内のサーバーから出しません。福岡発。
+title: 日本発、フィジカルAIのためのデータ基盤
+description: HUMI（Humanoid Industries）は福岡を拠点に、ロボットの学習データを集め、確かめ、理解するためのツールをつくっています。まずはロボット学習動画の品質チェック「HUMI Inspect」から。
+alt: /
 permalink: /ja/
 ---
-<section class="hero">
+<section class="hero co">
   <div class="wrap">
     <div>
-      <p class="eyebrow">フィジカルAIのデータ品質</p>
-      <h1>そのロボット学習データ、<br>本当に使えますか。</h1>
-      <p class="lead">HUMIは、一人称視点の動画やロボットカメラの映像を自動でチェックし、学習データを台無しにする問題を見つけます。暗すぎる、ピンぼけ、カメラの揺れ、手がフレーム外、顔の映り込み。クリップごとの判定、問題が起きた時刻、そしてまだ使える区間がひと目で分かります。</p>
+      <p class="eyebrow">Humanoid Industries・福岡</p>
+      <h1>日本発、<br>フィジカルAIのためのデータ基盤。</h1>
+      <p class="lead">ロボットはデータから学びます。HUMIは、ロボット開発チームが学習データを集め、確かめ、理解するためのツールをつくっています。最初の製品は、ロボット学習動画の品質チェックです。</p>
       <div class="hero-cta">
-        <a class="btn" href="#pilot">試験導入を相談する</a>
-        <a class="btn ghost" href="#how">仕組みを見る</a>
+        <a class="btn" href="/ja/inspect/">HUMI Inspectを見る</a>
+        <a class="btn ghost" href="/ja/blog/">リサーチを読む</a>
       </div>
-      <p class="note">お客様のサーバー上で動作します。動画が社外に出ることはありません。</p>
     </div>
 
-    <figure class="mock" aria-label="レポートの例">
-      <div class="mock-head"><strong>バッチレポート</strong><span>412 クリップ</span></div>
-      <div class="mock-sum">
-        <div><b class="g">288</b><span>使用可</span></div>
-        <div><b class="a">61</b><span>一部使用可</span></div>
-        <div><b class="r">63</b><span>不可</span></div>
-      </div>
-      <ul class="mock-rows">
-        <li><span class="f pn">assembly_0141.mp4</span><span class="v g">使用可</span><span class="tl"></span></li>
-        <li><span class="f pn">assembly_0142.mp4</span><span class="v a">一部使用可</span><span class="tl"><i class="k-hand" style="left:58%;width:16%"></i></span><span class="rsn">手がフレーム外 0:41〜0:52</span></li>
-        <li><span class="f pn">assembly_0143.mp4</span><span class="v r">不可</span><span class="tl"><i class="k-dark" style="left:0;width:100%"></i></span><span class="rsn">全編にわたり暗すぎる</span></li>
-        <li><span class="f pn">assembly_0144.mp4</span><span class="v a">一部使用可</span><span class="tl"><i class="k-shake" style="left:12%;width:9%"></i><i class="k-blur" style="left:70%;width:7%"></i></span><span class="rsn">カメラの揺れ 0:07〜0:13</span></li>
-      </ul>
-      <figcaption>レポートのイメージです。数値は例です。</figcaption>
+    <figure class="pipe" aria-label="HUMIの位置づけ">
+      <figcaption>ロボットのデータパイプラインにおけるHUMIの位置づけ</figcaption>
+      <ol>
+        <li class="dim"><span class="st">検討中</span><b>収集</b><span>国内の現場から実作業データを</span></li>
+        <li class="on"><span class="st">試験導入受付中</span><b>HUMI Inspect</b><span>モデルに渡す前に、すべてのクリップを確認</span></li>
+        <li class="dim"><span class="st st-x">お客様</span><b>学習</b><span>きれいなデータで、より良いロボットを</span></li>
+      </ol>
+      <div class="pipe-foot"><b>HUMI Research</b>・日本のロボット・サプライチェーンを公開データで分析</div>
     </figure>
   </div>
 </section>
 
-<section class="block" id="problem">
+<section class="block" id="build">
   <div class="wrap">
-    <h2>使えないクリップは、二重にコストがかかる</h2>
-    <div class="why">
-      <div><h3>集めるのにお金がかかる</h3><p>オペレーターや協力者、ロボットの稼働時間は、使えるかどうかに関係なく、録画した時間の分だけ費用が発生します。</p></div>
-      <div><h3>モデルの性能も落とす</h3><p>暗い、揺れている、途中で終わっているデモは、ロボットに間違ったことを教えます。データを選別しているチームほど、少ない時間で良い結果を出しています。</p></div>
-      <div><h3>目視チェックは追いつかない</h3><p>何時間もの映像を人が見て確認するのは、時間がかかり、判断もばらつきます。品質管理がデータ収集全体のボトルネックになります。</p></div>
+    <h2>つくっているもの</h2>
+    <div class="cards">
+      <a class="card-p main" href="/ja/inspect/">
+        <span class="tag ok">試験導入受付中</span>
+        <h3>HUMI Inspect</h3>
+        <p>ロボット学習動画の品質チェック。暗い・ぼけている・揺れているクリップ、手のフレームアウト、顔の映り込みを検出し、使えるクリップを判定します。お客様のサーバー上で動作します。</p>
+        <span class="more">HUMI Inspectを見る →</span>
+      </a>
+      <a class="card-p" href="/ja/blog/">
+        <span class="tag">公開中</span>
+        <h3>HUMI Research</h3>
+        <p>日本のロボット・フィジカルAIのサプライチェーンを、データにもとづいて解説。日本語と英語で公開しています。</p>
+        <span class="more">リサーチを読む →</span>
+      </a>
+      <a class="card-p" href="#contact">
+        <span class="tag dim">検討中</span>
+        <h3>国内でのデータ収集</h3>
+        <p>国内の職場から、同意を得たうえで実作業のデータを収集。必要としている方のお話をお聞きしたいと考えています。</p>
+        <span class="more">相談する →</span>
+      </a>
     </div>
   </div>
 </section>
 
-<section class="block alt" id="product">
+<section class="block alt" id="japan">
   <div class="wrap">
-    <h2>HUMIがチェックする項目</h2>
-    <ul class="checks-grid">
-      <li><i class="k-dark"></i><div><h3>明るさ</h3><p>暗すぎる・白飛び。全編でも、数秒だけでも検出します。</p></div></li>
-      <li><i class="k-blur"></i><div><h3>鮮明さ</h3><p>ピンぼけやレンズの汚れ。素早い手の動きによる通常のブレとは区別します。</p></div></li>
-      <li><i class="k-shake"></i><div><h3>カメラの揺れ</h3><p>頭部・胸部に装着したカメラの持続的な揺れ。</p></div></li>
-      <li><i class="k-hand"></i><div><h3>手の映り込み</h3><p>片手・両手が映っている時間と、フレームから外れた時刻。</p></div></li>
-      <li><i class="k-face"></i><div><h3>顔とプライバシー</h3><p>顔が映ったクリップを、顧客やモデルに渡る前に検出します。</p></div></li>
-      <li><i class="k-basic"></i><div><h3>ファイルの基本情報</h3><p>長さ、解像度、フレームレート、読み込めないファイル。</p></div></li>
-    </ul>
-    <p class="parts-note"><strong>開発中：</strong>作業ペース、フリーズしたフレーム、重複クリップ、遠隔操作ログのセンサー同期。</p>
-  </div>
-</section>
-
-<section class="block" id="how">
-  <div class="wrap">
-    <h2>仕組み</h2>
-    <ol class="steps">
-      <li><span class="n">1</span><h3>社内に導入</h3><p>お客様のパソコンやサーバー上で動作します。HUMIに動画が送られることはありません。</p></li>
-      <li><span class="n">2</span><h3>フォルダを指定</h3><p>クリップをまとめて投入するだけ。各動画は1秒間に数回、一度だけ計測します。</p></li>
-      <li><span class="n">3</span><h3>基準は自社で設定</h3><p>どこからを「暗すぎる」「ぼけている」「揺れている」とするかを、スライダーとプリセットで調整。判定はすぐに更新されます。</p></li>
-      <li><span class="n">4</span><h3>レポートで判断</h3><p>使えるクリップだけに支払い、不可のものは理由を添えて差し戻し、使える区間は残す。CSV・JSONで出力できます。</p></li>
-    </ol>
-  </div>
-</section>
-
-<section class="block alt" id="why">
-  <div class="wrap">
-    <h2>HUMIを選ぶ理由</h2>
+    <h2>なぜ日本なのか</h2>
     <div class="why">
-      <div><h3>データは国内・社内に</h3><p>ロボットの学習動画は機密性が高いもの。HUMIはデータがある場所で動くため、アップロードも社外承認も不要です。</p></div>
-      <div><h3>基準はお客様のもの</h3><p>求める品質は買い手ごとに違います。項目ごとの基準を自由に設定し、自社のプリセットとして保存できます。</p></div>
-      <div><h3>製造現場の視点で開発</h3><p>製造とマシンビジョンの現場出身のエンジニアが開発。日本語・英語・フランス語で対応します。</p></div>
+      <div><h3>ロボットは日本の部品でできている</h3><p>今日のロボットに使われる減速機、モーター、センサーの多くは日本製です。それをつくる産業がここにあります。</p></div>
+      <div><h3>国外に出せないデータがある</h3><p>工場や職場の映像を海外に送ることに、日本企業は慎重です。社内で動き、国内でサポートできるツールが現場に合っています。</p></div>
+      <div><h3>ロボットは日本の現場で働く</h3><p>日本で使われるロボットには、日本の職場、道具、言葉のデータが必要です。いま、学習データの多くは海外で集められています。</p></div>
     </div>
   </div>
 </section>
 
-<section class="block quote" id="pilot">
-  <div class="wrap">
+<section class="block" id="about">
+  <div class="wrap about">
+    <h2>HUMIについて</h2>
     <div>
-      <h2>試験導入のご相談</h2>
-      <p class="sub">国内のデータ収集チーム、ロボットメーカー、研究機関と少数で試験導入を進めています。データの内容を教えていただければ、サンプルのバッチで一緒に検証します。</p>
-      <p class="alt-mail">メールでも受け付けています：<a href="mailto:{{ site.email }}">{{ site.email }}</a></p>
+      <p>HUMI（Humanoid Industries）は、福岡の独立系の会社です。半導体製造と工場自動化の現場で、生産ラインとマシンビジョンに携わってきたエンジニアが立ち上げました。</p>
+      <p>ロボットの学習データを集め、使う人のための実用的なツールをつくり、日本のロボット産業について分かったことを公開しています。日本語・英語・フランス語で対応します。</p>
     </div>
-    <form class="full" id="pilot-form" action="{{ site.formEndpoint }}" method="POST">
-      <div><label for="f-name">お名前</label><input id="f-name" name="name" autocomplete="name" required></div>
-      <div><label for="f-company">会社名・研究室名</label><input id="f-company" name="company" autocomplete="organization" required></div>
-      <div class="wide"><label for="f-email">メールアドレス</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
-      <div><label for="f-type">データの種類</label>
-        <select id="f-type" name="data_type">
-          <option value="egocentric">一人称視点（エゴセントリック）動画</option>
-          <option value="teleop">遠隔操作・ロボットカメラ</option>
-          <option value="umi">ハンドヘルドグリッパー（UMI型）</option>
-          <option value="other">その他・複数</option>
-        </select></div>
-      <div><label for="f-hours">月あたりの収集時間</label>
-        <select id="f-hours" name="hours_per_month">
-          <option value="<100">100時間未満</option>
-          <option value="100-1000">100〜1,000時間</option>
-          <option value=">1000">1,000時間以上</option>
-          <option value="unknown">まだ分からない</option>
-        </select></div>
-      <div class="wide"><label for="f-notes">現在、品質はどのように確認していますか？（任意）</label><textarea id="f-notes" name="notes" style="min-height:100px"></textarea></div>
-      <input type="hidden" name="form" value="pilot">
-      <input type="hidden" name="language" id="f-lang" value="ja">
-      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-      <label class="check wide"><input type="checkbox" required> <span><a href="#privacy">プライバシーポリシー</a>に同意します。</span></label>
-      <div class="wide"><button class="btn" type="submit">試験導入を相談する</button></div>
-      <p class="status" id="status" role="status" aria-live="polite"></p>
-    </form>
   </div>
 </section>
 
 <section class="block alt" id="research">
   <div class="wrap">
-    <h2>リサーチ</h2>
-    <p class="sub-lead">公開データをもとに、日本のロボット・フィジカルAIのサプライチェーンを追跡し、ロボットをつくる人にとっての意味を解説しています。</p>
+    <h2>最新のリサーチ</h2>
     {% if collections.postsJa.length %}
     <ul class="posts">
       {% for post in collections.postsJa | head(4) %}
@@ -140,17 +95,6 @@ permalink: /ja/
   </div>
 </section>
 
-<section class="block faq" id="faq">
-  <div class="wrap">
-    <h2>よくある質問</h2>
-    <details><summary>動画はどこかにアップロードされますか？</summary><p>いいえ。HUMIはお客様の端末に導入し、その場で動画を処理します。サンプルを共有いただく場合を除き、映像を受け取ることはありません。</p></details>
-    <details><summary>対応している形式は？</summary><p>現在はMP4、MOV、AVI、MKV、WEBMの動画に対応しています。ロボットのログ（MCAP、LeRobot）への対応は開発中です。</p></details>
-    <details><summary>作業が正しく行われたかも判定できますか？</summary><p>現時点ではできません。今は映像として使えるか（明るさ、鮮明さ、揺れ、手、プライバシー）を判定します。作業レベルのチェックは、組立とハンドリングの作業から順に開発予定です。</p></details>
-    <details><summary>費用は？</summary><p>初期パートナーとの試験導入は無料です。その後は、会社ごとの年間定額ライセンス（使用量無制限、アップデートとサポート込み）を予定しています。</p></details>
-    <details><summary>どんな組織向けですか？</summary><p>国内でロボットの学習データを収集・購入しているチーム向けです。データ収集会社、ヒューマノイド・ロボットメーカー、研究機関など。</p></details>
-  </div>
-</section>
-
 <section class="block contact" id="contact">
   <div class="wrap">
     <h2>お問い合わせ</h2>
@@ -160,5 +104,6 @@ permalink: /ja/
       <div><dt>対応言語</dt><dd>日本語・英語・フランス語</dd></div>
       <div><dt>所在地</dt><dd>福岡</dd></div>
     </dl>
+    <p class="parts-note">自社のデータでHUMI Inspectを試してみませんか？ <a href="/ja/inspect/#pilot">試験導入を相談する</a></p>
   </div>
 </section>
