@@ -2,7 +2,12 @@ name: Blog agent - write a draft
 
 on:
   schedule:
-    - cron: "0 2 * * *"     # every day at 11:00 Japan time (GitHub may start it 5-20 min late)
+    # Daily draft around 11:00 Japan time. GitHub sometimes skips or delays scheduled runs,
+    # so there are backup slots; the agent makes only one draft per day (manual runs always run).
+    - cron: "13 2 * * *"    # 11:13 JST
+    - cron: "47 2 * * *"    # 11:47 JST (backup)
+    - cron: "29 3 * * *"    # 12:29 JST (backup)
+    - cron: "11 5 * * *"    # 14:11 JST (backup)
     # For testing every 15 minutes, use this line instead (costs add up fast, the monthly cap still applies):
     # - cron: "*/15 * * * *"
   workflow_dispatch:         # adds a "Run workflow" button on the Actions tab

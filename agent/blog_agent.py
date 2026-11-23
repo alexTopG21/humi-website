@@ -428,6 +428,13 @@ def generate():
     import anthropic
 
     site, state, tg = setup()
+    # Scheduled runs fire several times a day as a backup (GitHub sometimes skips a slot).
+    # Only the first one that gets through makes a draft; manual runs always go ahead.
+    if os.environ.get("GITHUB_EVENT_NAME") == "schedule":
+        today = now().strftime("%Y-%m-%d")
+        if any(r.get("created_at", "").startswith(today) and r.get("status") != "failed" for r in state.history):
+            print("A draft was already made today; skipping this backup slot.")
+            return
     month = now().strftime("%Y-%m")
     spent = state.spend.get(month, 0.0)
     cap_usd = CFG["monthly_cap_jpy"] / CFG["jpy_per_usd"]
