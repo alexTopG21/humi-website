@@ -369,5 +369,15 @@
     ],
     "status": "published",
     "url": "https://humi-ai.com/ja/blog/kaist-raipal-thermal-limited-humanoid-arm/"
+  },
+  {
+    "id": "20261128-134230",
+    "created_at": "2026-11-28T13:42:30+09:00",
+    "title": "Schaefflerのヒューマノイド向け関節アクチュエーター参入：受注残4億ユーロの中身と、まだ見えない売上",
+    "topic": "Schaeffler's move from bearing supplier to humanoid joint-actuator supplier (planetary actuator, Humanoid deal, Taicang plant, order book vs revenue)",
+    "sources": [
+      "https://www.robotics247.com/article/ces-2026-schaeffler-presents-planetary-gear-actuator-for-humanoid-robots/technologies"
+    ],
+    "status": "pending"
   }
 ]
